@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gitops-demo-staging
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: git@192.168.119.166:dev/gitops-demo-env.git
+    targetRevision: main
+    path: charts/gitops-demo
+    helm:
+      valueFiles:
+        - values-staging.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: gitops-demo-staging
+  syncPolicy:
+    automated:
+      selfHeal: true

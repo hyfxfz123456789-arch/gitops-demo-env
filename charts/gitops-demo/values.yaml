@@ -1,0 +1,24 @@
+replicaCount: 1
+
+image:
+  repository: 192.168.119.166:8443/gitops-demo/web
+  tag: "22-bc8dccd"
+  pullPolicy: IfNotPresent
+
+imagePullSecrets:
+  - name: harbor-pull
+
+service:
+  port: 80
+
+ingress:
+  className: nginx
+  host: demo.lab
+
+resources:
+  requests:
+    cpu: 25m
+    memory: 32Mi
+  limits:
+    cpu: 250m
+    memory: 128Mi
