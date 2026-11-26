@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  tag: 26-90e49a6
+  tag: 30-51e088a
 
 ingress:
   host: demo.lab
